@@ -1,11 +1,7 @@
 function editNav() {
-  let x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
+  const toggleMenu = document.querySelector("#myTopnav");
+  toggleMenu.classList.toggle("responsive");
   }
-}
 
 //REGEX
 const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -13,9 +9,9 @@ const nameRegex = /^[$A-Za-zéèà\s-]{2,}$/; // 2 caractères minimum
 const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD
 
 // DOM Elements
-const modalbg = document.querySelector(".bground"); 
+const modalbg = document.querySelector(".bground");
 const modalSuccess = document.querySelector(".modal-success");
-const modalBtn = document.querySelectorAll(".modal-btn");  // button to launch form modal
+const modalBtn = document.querySelectorAll(".modal-btn"); // button to launch form modal
 const closeBtn = document.querySelector("#close-btn"); // button to close form modal
 const closeBtnSuccess = document.querySelector(".close-success"); // button to close success modal
 const closeBtnByBtn = document.querySelector(".close-by-btn"); // button to close success modal by button
@@ -67,11 +63,13 @@ const submit = document.querySelector(".btn-submit");
 submit.addEventListener("click", (e) => {
   e.preventDefault();
 
-  let selectedLocation = locationCheckboxArray.find((item) =>
-    item.checked ? item.value : null
-  );
 
   if (checkForm()) {
+
+    let selectedLocation = locationCheckboxArray.find((item) =>
+    item.checked ? item.value : null
+  );
+  
     let sendFormData = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -109,7 +107,7 @@ function checkForm() {
     let isValidInput = true;
 
     if (regex) {
-      isValidInput = regex.test(input.value);  // check if input value matches regex
+      isValidInput = regex.test(input.value); // check if input value matches regex
     } else if (Array.isArray(input)) {
       isValidInput = input.some((item) => item.checked); // check if at least one radio button is checked
     } else if (input.type === "checkbox") {
@@ -119,7 +117,7 @@ function checkForm() {
     }
 
     formData[index].setAttribute("data-error-visible", String(!isValidInput));
-    isValid &&= isValidInput; 
+    isValid &&= isValidInput;
   });
 
   return isValid;
