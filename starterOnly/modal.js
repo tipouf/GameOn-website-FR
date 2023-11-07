@@ -1,21 +1,21 @@
 function editNav() {
   const toggleMenu = document.querySelector("#myTopnav");
   toggleMenu.classList.toggle("responsive");
-  }
+}
 
 //REGEX
 const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const nameRegex = /^[$A-Za-zéèà\s-]{2,}$/; // 2 caractères minimum
-const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // YYYY-MM-DD
+const nameRegex = /^[$A-Za-zéèà\s-]{2,}$/; 
+const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalSuccess = document.querySelector(".modal-success");
-const modalBtn = document.querySelectorAll(".modal-btn"); // button to launch form modal
-const closeBtn = document.querySelector("#close-btn"); // button to close form modal
-const closeBtnSuccess = document.querySelector(".close-success"); // button to close success modal
-const closeBtnByBtn = document.querySelector(".close-by-btn"); // button to close success modal by button
-const formData = document.querySelectorAll(".formData"); // get all form fields
+const modalBtn = document.querySelectorAll(".modal-btn"); 
+const closeBtn = document.querySelector("#close-btn"); 
+const closeBtnSuccess = document.querySelector(".close-success"); 
+const closeBtnByBtn = document.querySelector(".close-by-btn"); 
+const formData = document.querySelectorAll(".formData"); 
 
 const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
@@ -63,20 +63,18 @@ const submit = document.querySelector(".btn-submit");
 submit.addEventListener("click", (e) => {
   e.preventDefault();
 
-
   if (checkForm()) {
-
     let selectedLocation = locationCheckboxArray.find((item) =>
-    item.checked ? item.value : null
-  );
-  
+      item.checked ? item.value : null
+    );
+
     let sendFormData = {
       firstName: firstName.value,
       lastName: lastName.value,
       email: email.value,
       birthDate: birthDate.value,
       quantity: quantity.value,
-      location: selectedLocation?.value,
+      location: selectedLocation.value,
       condition1: conditionCheckbox1.checked,
       condition2: conditionCheckbox2.checked,
     };
