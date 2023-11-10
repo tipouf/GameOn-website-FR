@@ -65,7 +65,7 @@ submit.addEventListener("click", (e) => {
 
   if (checkForm()) {
     let selectedLocation = locationCheckboxArray.find((item) =>
-      item.checked ? item.value : null
+      item.checked
     );
 
     let sendFormData = {
@@ -105,13 +105,13 @@ function checkForm() {
     let isValidInput = true;
 
     if (regex) {
-      isValidInput = regex.test(input.value); // check if input value matches regex
+      isValidInput = regex.test(input.value); 
     } else if (Array.isArray(input)) {
-      isValidInput = input.some((item) => item.checked); // check if at least one radio button is checked
+      isValidInput = input.some((item) => item.checked); 
     } else if (input.type === "checkbox") {
-      isValidInput = input.checked; // check if checkbox is checked
+      isValidInput = input.checked; 
     } else {
-      isValidInput = input.value !== ""; // check if input value is not empty
+      isValidInput = input.value !== "";
     }
 
     formData[index].setAttribute("data-error-visible", String(!isValidInput));
